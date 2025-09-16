@@ -46,38 +46,44 @@ class Product
         return $this->description;
     }
 
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
 
-    public function getQuantity(): string
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    public function setId(string $newId)
+    public function setId(string $newId): void
     {
         $this->id = $newId;
     }
 
-    public function setName(string $newName)
+    public function setName(string $newName): void
     {
         $this->name = $newName;
     }
 
-    public function setDescription(string $newDescription)
+    public function setDescription(string $newDescription): void
     {
         $this->description = $newDescription;
     }
 
-    public function setPrice(float $newPrice)
+    public function setPrice(float $newPrice): void
     {
+        if ($newPrice < 0) {
+            echo "Price cannot be negative\n";
+        }
         $this->price = $newPrice;
     }
 
-    public function setQuantity(int $newQuantity)
+    public function setQuantity(int $newQuantity): void
     {
+        if ($newQuantity < 0) {
+            echo "Quantity cannot be negative\n";
+        }
         $this->quantity = $newQuantity;
     }
 }
