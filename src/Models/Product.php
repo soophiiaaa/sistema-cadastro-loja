@@ -28,7 +28,7 @@ class Product
     public function __get(string $attributeName)
     {
         $method = 'get' . ucfirst($attributeName);
-        return $this->method();
+        return $this->$method();
     }
 
     public function getId(): string
