@@ -18,6 +18,22 @@ class Store
         $this->products[] = $product;
     }
 
+    public function buyProduct(string $id, int $quantity)
+    {
+        foreach ($this->products as $product) {
+            if ($product->id === $id) {
+                if ($product->quantity > $quantity) {
+                    echo "Purchase made successfully\n";
+                    $product->setQuantity($product->getQuantity() - $quantity);
+                    return;
+                } else {
+                    echo "Insufficient quantity available\n";
+                }
+            }
+        }
+        echo "Product not found or non-existent\n";
+    }
+
     public function getProductById(string $id)
     {
         foreach ($this->products as $product) {

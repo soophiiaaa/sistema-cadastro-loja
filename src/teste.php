@@ -12,6 +12,9 @@ $smartTv = new Electronic('ELEC-TV-4K-001', '55-inch 4K Smart TV', 'A high-defin
 echo $smartTv->checkWarranty(28);
 
 $loja->addProduct($smartTv);
+$loja->buyProduct('ELEC-TV-4K-001', 62);
 $loja->showProducts();
+
+// echo "{$smartTv->getQuantity()}\n";
 
 // var_dump($produto);
