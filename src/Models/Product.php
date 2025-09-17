@@ -2,7 +2,7 @@
 
 namespace Lacerda\Commercial\Models;
 
-class Product
+abstract class Product
 {
     private string $id;
     private string $name;
