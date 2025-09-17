@@ -32,4 +32,14 @@ class Electronic extends Product
 
         return "Product under warranty! Remaining period: {$remainingPeriod}\n";
     }
+
+    public function getWarranty(): int
+    {
+        return $this->warranty;
+    }
+
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
 }
