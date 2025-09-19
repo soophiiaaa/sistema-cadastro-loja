@@ -28,7 +28,13 @@ abstract class Product
     public function __get(string $attributeName)
     {
         $method = 'get' . ucfirst($attributeName);
-        return $this->$method();
+        $value = $this->$method();
+
+        if (is_array($value)) {
+            return implode(", ", $value) . "\n";
+        }
+
+        return $value . "\n";
     }
 
     public function getId(): string

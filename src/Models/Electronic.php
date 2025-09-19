@@ -2,7 +2,9 @@
 
 namespace Lacerda\Commercial\Models;
 
-class Electronic extends Product
+use Lacerda\Commercial\Contracts\ProductManager;
+
+class Electronic extends Product implements ProductManager
 {
     private int $warranty;
     private string $brand;
@@ -19,7 +21,7 @@ class Electronic extends Product
     public function __toString(): string
     {
         return "{$this->id}, {$this->name}, {$this->description}, 
-        {$this->brand}";
+        {$this->brand}\n";
     }
 
     public function checkWarranty(int $use): string 
@@ -31,6 +33,13 @@ class Electronic extends Product
         $remainingPeriod = $this->warranty - $use;
 
         return "Product under warranty! Remaining period: {$remainingPeriod}\n";
+    }
+
+    public function applyDiscount(): float
+    {
+        $discount = $this->getPrice * 0.10;
+        $this->setPrice($this->getPrice() - $discount);
+        return $this->getPrice();
     }
 
     public function getWarranty(): int

@@ -2,7 +2,9 @@
 
 namespace Lacerda\Commercial\Models;
 
-class Food extends Product
+use Lacerda\Commercial\Contracts\ProductManager;
+
+class Food extends Product implements ProductManager
 {
     private bool $refrigeration;
     private string $category;
@@ -16,6 +18,12 @@ class Food extends Product
         $this->category = $category;
     }
 
+    public function __toString(): string
+    {
+        return "{$this->id}, {$this->name}, {$this->description}, 
+        {$this->category}\n";
+    }
+
     public function needsRefrigeration()
     {
         if ($this->refrigeration === true) {
@@ -23,6 +31,13 @@ class Food extends Product
         }
 
         echo "Does not require refrigeration\n";
+    }
+
+    public function applyDiscount(): float
+    {
+        $discount = $this->getPrice * 0.30;
+        $this->setPrice($this->getPrice() - $discount);
+        return $this->getPrice();
     }
 
     public function getRefrigeration(): bool

@@ -2,7 +2,9 @@
 
 namespace Lacerda\Commercial\Models;
 
-class Clothing extends Product
+use Lacerda\Commercial\Contracts\ProductManager;
+
+class Clothing extends Product implements ProductManager
 {
     private array $sizes;
     private string $material;
@@ -19,7 +21,7 @@ class Clothing extends Product
     public function __toString(): string
     {
         return "{$this->id}, {$this->name}, {$this->description}, 
-        {$this->size}, {$this->material}";
+        {$this->size}, {$this->material}\n";
     }
 
     public function checkAvaliability(string $desiredSize) 
@@ -34,6 +36,12 @@ class Clothing extends Product
         echo "Size not available!\n";
     }
 
+    public function applyDiscount(): float
+    {
+        $discount = $this->getPrice * 0.20;
+        $this->setPrice($this->getPrice() - $discount);
+        return $this->getPrice();
+    }
     public function getSizes(): array
     {
         return $this->sizes;
