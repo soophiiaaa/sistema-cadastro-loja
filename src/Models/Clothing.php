@@ -7,9 +7,11 @@ class Clothing extends Product
     private array $sizes;
     private string $material;
 
-    public function __construct(string $id, string $name, string $description, float $price, int $quantity, array $sizes, string $material)
+    public function __construct(string $id, string $name, string $description,
+    float $price, int $quantity, array $sizes, string $material)
     {
-        parent::__construct($id, $name, $description, $price, $quantity);
+        parent::__construct($id, $name, $description,
+        $price, $quantity);
         $this->sizes = $sizes;
         $this->material = $material;
     }
