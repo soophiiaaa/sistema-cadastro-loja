@@ -22,7 +22,7 @@ class Electronic extends Product
         {$this->brand}";
     }
 
-    public function checkWarranty(int $use):string 
+    public function checkWarranty(int $use): string 
     {
         if ($this->warranty < $use) {
             return "Product is out of warranty\n";

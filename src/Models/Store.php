@@ -2,8 +2,6 @@
 
 namespace Lacerda\Commercial\Models;
 
-use Lacerda\Commercial\Models\Product;
-
 class Store 
 {
     private array $products;
