@@ -2,8 +2,12 @@
 
 namespace Lacerda\Commercial\Models;
 
+use Lacerda\Commercial\Traits\LoggerTrait;
+
 class Store 
 {
+    use LoggerTrait;
+
     private array $products;
 
     public function __construct()
@@ -11,9 +15,10 @@ class Store
         $this->products = [];
     }
 
-    public function addProduct(Product $product)
+    public function addProduct(Product $product): void
     {
         $this->products[] = $product;
+        $this->log("Product {$product->getName()} registered succesfully");
     }
 
     public function buyProduct(string $id, int $quantity)
