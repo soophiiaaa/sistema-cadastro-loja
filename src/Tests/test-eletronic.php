@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Core/Autoloader.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Lacerda\Commercial\Models\Electronic;
 
